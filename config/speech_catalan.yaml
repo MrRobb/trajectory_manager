@@ -1,0 +1,9 @@
+language: "ca"
+task description: "Vaig a trobar {object_class}."
+next location: "Vaig a la següent ubicació."
+found object: "He trobat {object_class}."
+returning to user: "Tornaré al usuari."
+deliver object: "Aquí tens {object_class}."
+object not found: "No he trobat {object_class}."
+object_class:
+  cup: "la taça"

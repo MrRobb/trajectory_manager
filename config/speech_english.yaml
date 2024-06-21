@@ -1,0 +1,9 @@
+language: "en"
+task description: "I will find {object_class}."
+next location: "I am going to the next location."
+found object: "I have found {object_class}."
+returning to user: "I will go back to the user."
+deliver object: "Here is {object_class}."
+object not found: "I could not find {object_class}."
+object_class:
+  cup: "the cup"

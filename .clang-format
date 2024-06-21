@@ -1,0 +1,12 @@
+---
+# We'll use defaults from the LLVM style, but with 4 columns indentation.
+BasedOnStyle: Google
+IndentWidth: 4
+---
+Language: Cpp
+AccessModifierOffset: -4
+AlignAfterOpenBracket: BlockIndent
+BreakConstructorInitializers: AfterColon
+<!-- Every argument in a new line -->
+BinPackArguments: false
+---
