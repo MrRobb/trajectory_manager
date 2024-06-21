@@ -38,6 +38,13 @@ private:
     // ROS Publishers
     ros::Publisher last_route_pub;
 
+    // ROS Services
+    ros::ServiceServer get_current_location_service;
+    ros::ServiceServer get_route_for_object_service;
+    ros::ServiceServer go_to_location_service;
+    ros::ServiceServer add_current_location_service;
+    ros::ServiceServer closest_location_to_position_service;
+
     // ROS Service Proxy
     ros::ServiceClient go_to_service;
 

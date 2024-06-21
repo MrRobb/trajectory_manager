@@ -52,25 +52,25 @@ TrajectoryManager::TrajectoryManager(
         nh->serviceClient<trajectory_manager::GoTo>(go_to_service);
 
     // Services
-    this->nh->advertiseService(
+    this->get_current_location_service = this->nh->advertiseService(
         get_current_location_service,
         &TrajectoryManager::get_current_location,
         this
     );
-    this->nh->advertiseService(
+    this->get_route_for_object_service = this->nh->advertiseService(
         get_route_for_object_service,
         &TrajectoryManager::get_route_for_object,
         this
     );
-    this->nh->advertiseService(
+    this->go_to_location_service = this->nh->advertiseService(
         go_to_location_service, &TrajectoryManager::go_to_location, this
     );
-    this->nh->advertiseService(
+    this->add_current_location_service = this->nh->advertiseService(
         add_current_location_service,
         &TrajectoryManager::add_current_location,
         this
     );
-    this->nh->advertiseService(
+    this->closest_location_to_position_service = this->nh->advertiseService(
         closest_location_to_position_service,
         &TrajectoryManager::closest_location_to_position,
         this
