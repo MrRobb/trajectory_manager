@@ -1,8 +1,14 @@
 
 #include "LocationManager.hpp"
 
+#include <filesystem>
+
 void LocationManager::load_locations() {
     // Read the locations from the CSV file
+    if (!std::filesystem::exists(this->filename)) {
+        ROS_WARN("Locations file %s does not exist", this->filename.c_str());
+        return;
+    }
     rapidcsv::Document document(this->filename);
     for (size_t i = 0; i < document.GetRowCount(); i++) {
         std::string name = document.GetCell<std::string>("name", i);
