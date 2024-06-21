@@ -52,4 +52,7 @@ The package provides the following services:
 
 ## TODO
 
-- 
+- [x] Manage the locations in a CSV file.
+- [x] Use the AMCL pose to update the current location.
+- [ ] Load the parameters dynamically from a file (rosparam or yaml).
+- [ ] Use Word2Vec model to calculate the semantic similarity of the objects.
