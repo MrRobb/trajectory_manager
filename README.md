@@ -25,6 +25,7 @@ catkin_make -DCMAKE_BUILD_TYPE=Release && source devel/setup.sh
 To use the package, you need to run the `trajectory_manager` node. The node provides a service that can be used to generate a trajectory for the robot to follow.
 
 ```bash
+cd ~/catkin_ws/src/trajectory_manager
 rosrun trajectory_manager trajectory_manager
 ```
 
