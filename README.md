@@ -1,7 +1,5 @@
 # Trajectory Manager
 
-> WARNING: This package is still under active development and is not yet ready for use.
-
 This package is a ROS package that provides a service to generate a trajectory for a robot to follow. The trajectory is generated in the robot's base frame and is published as a `nav_msgs/Path` message.
 
 The trajectory is based on a set of waypoints that are provided by the user. The waypoints are provided in the robot's base frame and are used to generate a smooth trajectory that the robot can follow.
@@ -11,13 +9,40 @@ The order of the waypoints is calculated based on the semantic similarity of the
 
 ## Installation
 
+### Dependencies
+
+To install the dependencies, we use [cget](https://github.com/pfultz2/cget). A tool that downloads and installs CMake packages from git repositories.
+
+To install it, you can use the following command:
+
+```bash
+pip install cget
+```
+
+To install the dependencies, you can use the following command:
+
+```bash
+cget install -f requirements.txt
+```
+
+### Download the word2vec model
+
+You can download the word2vec model with the following command:
+
+```bash
+cd data/gensim/
+wget http://vectors.nlpl.eu/repository/11/1.zip
+unzip 1.zip
+```
+
+### The trajectory_manager package
+
 To install the package, clone the repository into your catkin workspace and build the package using `catkin_make`.
 
 ```bash
 cd ~/catkin_ws/src
 git clone https://github.com/MrRobb/trajectory_manager.git
 cd ..
-cget install -f requirements.txt
 catkin_make -DCMAKE_BUILD_TYPE=Release && source devel/setup.sh
 ```
 
@@ -28,6 +53,15 @@ To use the package, you need to run the `trajectory_manager` node. The node prov
 ```bash
 cd ~/catkin_ws/src/trajectory_manager
 rosrun trajectory_manager trajectory_manager
+```
+
+## Test
+
+To test the package, you can use the following command:
+
+```bash
+cd ~/catkin_ws/src/trajectory_manager
+rosrun trajectory_manager trajectory_manager_test
 ```
 
 ## Input
