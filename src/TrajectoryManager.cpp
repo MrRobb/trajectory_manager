@@ -17,7 +17,7 @@ TrajectoryManager::TrajectoryManager(
     const std::string &add_current_location_service,
     const std::string &closest_location_to_position_service
 ) :
-    locations_manager(locations_csv), gensim_model(gensim_model_file) {
+    locations_manager(locations_csv, gensim_model_file) {
     // ROS
     ros::init(argc, argv, node_name);
     this->nh = std::make_unique<ros::NodeHandle>();
@@ -240,10 +240,4 @@ geometry_msgs::Pose TrajectoryManager::transform_to_tf(
 
     // Return transformed pose
     return transformed_pose;
-}
-
-int main(int argc, char **argv) {
-    TrajectoryManager tm(argc, argv);
-    ros::spin();
-    return 0;
 }

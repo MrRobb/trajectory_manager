@@ -33,3 +33,6 @@
 
 # Other: Roberto
 .vscode
+build
+data/gensim
+cget

@@ -17,6 +17,7 @@ To install the package, clone the repository into your catkin workspace and buil
 cd ~/catkin_ws/src
 git clone https://github.com/MrRobb/trajectory_manager.git
 cd ..
+cget install -f requirements.txt
 catkin_make -DCMAKE_BUILD_TYPE=Release && source devel/setup.sh
 ```
 
@@ -56,4 +57,4 @@ The package provides the following services:
 - [x] Manage the locations in a CSV file.
 - [x] Use the AMCL pose to update the current location.
 - [ ] Load the parameters dynamically from a file (rosparam or yaml).
-- [ ] Use Word2Vec model to calculate the semantic similarity of the objects.
+- [x] Use Word2Vec model to calculate the semantic similarity of the objects.

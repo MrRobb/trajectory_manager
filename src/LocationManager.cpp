@@ -34,7 +34,10 @@ void LocationManager::save_locations() {
     }
 }
 
-LocationManager::LocationManager(const std::string &filename) {
+LocationManager::LocationManager(
+    const std::string &filename, const std::string &word2vec_model_file
+) :
+    word2vec(word2vec_model_file) {
     // Initialize the variables
     this->locations = {};
     this->filename = filename;
@@ -118,30 +121,6 @@ void LocationManager::clear_locations() {
 
 std::vector<std::pair<double, Location>>
 LocationManager::get_semantic_similarity(const std::string &object_class) {
-    // TODO: Load gensim model
-
-    /*
-    Python example:
-        assert os.path.exists(model_file), f"File {model_file} does not
-    exist"
-        rospy.loginfo(f"Loading gensim model from {model_file}")
-        model = KeyedVectors.load_word2vec_format(model_file, binary=True)
-        rospy.loginfo(f"Loaded gensim model with {len(model.index_to_key)}
-        words")
-
-        try:
-            similarity = self.gensim_model.similarity(
-                f"{location['name']}_NOUN", f"{object_class}_NOUN"
-            )
-            location["semantic_similarity"] = similarity
-        except KeyError:
-            rospy.logerr(f"Word not found in gensim model:
-            {object_class}") location["semantic_similarity"] = 0.0
-    */
-
-    // TODO: For now, we just return the same similarity for all locations
-    ROS_WARN("Using placeholder semantic similarity calculation");
-
     // Initialize the semantic similarity vector
     std::vector<std::pair<double, Location>> semantic_similarity;
 
@@ -149,7 +128,7 @@ LocationManager::get_semantic_similarity(const std::string &object_class) {
     for (const auto &[name, location] : this->locations) {
         // Calculate the semantic similarity between the object class and
         // the location
-        double similarity = 0.5;
+        double similarity = this->word2vec.similarity(object_class, name);
 
         // Add the semantic similarity to the vector
         semantic_similarity.push_back({similarity, location});

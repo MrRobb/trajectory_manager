@@ -1,4 +1,6 @@
 
+#pragma once
+
 #include <fstream>
 #include <optional>
 #include <queue>
@@ -6,14 +8,15 @@
 #include <unordered_map>
 #include <vector>
 
+#include "GensimModel.hpp"
 #include "Location.hpp"
 #include "rapidcsv.h"
-#include "ros/console.h"
 
 class LocationManager {
 private:
     std::string filename;
     std::unordered_map<std::string, Location> locations;
+    GensimModel word2vec;
 
     /**
      * @brief Load the locations from the CSV file
@@ -21,7 +24,8 @@ private:
     void load_locations();
 
     /**
-     * @brief Save the locations to the CSV file. This function overwrites the CSV.
+     * @brief Save the locations to the CSV file. This function overwrites the
+     * CSV.
      */
     void save_locations();
 
@@ -31,7 +35,9 @@ public:
      *
      * @param filename The filename of the CSV file to load the locations from
      */
-    LocationManager(const std::string &filename);
+    LocationManager(
+        const std::string &filename, const std::string &word2vec_model_file
+    );
 
     /**
      * @brief Get the location with the given name

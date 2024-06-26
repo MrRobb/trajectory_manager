@@ -1,14 +1,16 @@
 
+#pragma once
+
 #include <string>
+
+#include "word2vec.hpp"
 
 class GensimModel {
 private:
     /**
-     * @brief Load the Word2Vec model from the given file
-     *
-     * @param model_file The path to the Word2Vec model binary file
+     * @brief The Word2Vec model
      */
-    void loadModel(std::string model_file);
+    w2v::w2vModel_t model;
 
 public:
     /**
@@ -16,7 +18,7 @@ public:
      *
      * @param model_file The path to the Word2Vec model binary file
      */
-    GensimModel(const std::string &model_file);
+    GensimModel(const std::string& model_file);
 
     /**
      * @brief Calculate the similarity between two words
@@ -25,5 +27,9 @@ public:
      * @param word2 The second word
      * @return double The similarity between the two words
      */
-    double similarity(std::string word1, std::string word2);
+    double similarity(
+        const std::string& word1, const std::string& word2,
+        const std::string& word1_type = "NOUN",
+        const std::string& word2_type = "NOUN"
+    );
 };

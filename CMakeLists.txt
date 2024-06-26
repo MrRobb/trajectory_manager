@@ -19,7 +19,6 @@ find_package(catkin REQUIRED COMPONENTS
     message_generation
     actionlib_msgs
     tf2_ros
-    # rapidcsv
 )
 
 ################################################
@@ -64,6 +63,7 @@ catkin_package(
 include_directories(
     include
     ${catkin_INCLUDE_DIRS}
+    cget/include
 )
 
 add_executable(
@@ -72,6 +72,30 @@ add_executable(
     src/Location.cpp
     src/LocationManager.cpp
     src/TrajectoryManager.cpp
+    src/Main.cpp
 )
-target_link_libraries(trajectory_manager ${catkin_LIBRARIES})
+target_link_libraries(trajectory_manager 
+  ${catkin_LIBRARIES} 
+  ${CMAKE_CURRENT_SOURCE_DIR}/cget/lib/libword2vec.a
+)
 add_dependencies(trajectory_manager ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+#############
+## Testing ##
+#############
+
+add_executable(
+    trajectory_manager_test
+    src/GensimModel.cpp
+    src/Location.cpp
+    src/LocationManager.cpp
+    src/TrajectoryManager.cpp
+    test/GensimModelTest.cpp
+    test/Main.cpp
+)
+target_link_libraries(trajectory_manager_test 
+  ${catkin_LIBRARIES}
+  ${CMAKE_CURRENT_SOURCE_DIR}/cget/lib/libword2vec.a
+  ${CMAKE_CURRENT_SOURCE_DIR}/cget/lib/libgtest.a
+)
+add_dependencies(trajectory_manager_test ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

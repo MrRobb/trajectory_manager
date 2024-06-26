@@ -1,4 +1,5 @@
-#include "GensimModel.hpp"
+#pragma once
+
 #include "LocationManager.hpp"
 #include "geometry_msgs/Point.h"
 #include "geometry_msgs/Pose.h"
@@ -24,9 +25,6 @@ private:
         std::nullopt;
     LocationManager locations_manager;
     std::string locations_frame;
-
-    // Similarity
-    GensimModel gensim_model;
 
     // ROS
     std::unique_ptr<ros::NodeHandle> nh = nullptr;

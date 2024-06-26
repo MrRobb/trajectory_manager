@@ -1,0 +1,3 @@
+d99kris/rapidcsv
+maxoodf/word2vec
+google/googletest
