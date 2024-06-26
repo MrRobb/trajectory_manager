@@ -34,5 +34,10 @@
 # Other: Roberto
 .vscode
 build
-data/gensim
 cget
+
+data/gensim/model.bin
+data/gensim/1.zip
+data/gensim/meta.json
+data/gensim/model.txt
+data/gensim/README
