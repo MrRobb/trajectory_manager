@@ -1,5 +1,8 @@
 # Trajectory Manager
 
+> [!WARNING] 
+> This package is a work in progress and is not yet ready for use.
+
 This package is a ROS package that provides a service to generate a trajectory for a robot to follow. The trajectory is generated in the robot's base frame and is published as a `nav_msgs/Path` message.
 
 The trajectory is based on a set of waypoints that are provided by the user. The waypoints are provided in the robot's base frame and are used to generate a smooth trajectory that the robot can follow.
